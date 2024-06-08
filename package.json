@@ -1,0 +1,129 @@
+{
+  "name": "markup-element-wrapper",
+  "displayName": "Markup Element Wrapper",
+  "description": "Wrap Elements for markup languages (such as HTML, SVG, XML, embedded HTML, etc.) with ease",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:vue",
+    "onLanguage:jsx",
+    "onLanguage:tsx",
+    "onLanguage:svelte",
+    "onLanguage:php",
+    "onLanguage:erb",
+    "onLanguage:svg",
+    "onLanguage:xml"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "extension.wrapWithDefault",
+        "key": "ctrl+w",
+        "mac": "cmd+w",
+        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == jsx || editorLangId == tsx || editorLangId == svelte || editorLangId == markdown || editorLangId == php || editorLangId == erb)"
+      },
+      {
+        "command": "extension.removeElement",
+        "key": "ctrl+shift+w",
+        "mac": "cmd+shift+w",
+        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == jsx || editorLangId == tsx || editorLangId == svelte || editorLangId == markdown || editorLangId == php || editorLangId == erb)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.wrapWithDefault",
+        "title": "Wrap with div"
+      },
+      {
+        "command": "extension.wrapWithDifferentElement",
+        "title": "Wrap with different element"
+      },
+      {
+        "command": "extension.removeElement",
+        "title": "Remove Element from the tree"
+      },
+      {
+        "command": "extension.wrapSelection",
+        "title": "Wrap Selection"
+      }
+    ],
+    "configuration": {
+      "title": "Markup Element Wrapper Settings",
+      "properties": {
+        "markup-element-wrapper.defaultWrappingElement": {
+          "type": "string",
+          "default": "div",
+          "description": "Specify the default wrapping block element"
+        },
+        "markup-element-wrapper.defaultClassName": {
+          "type": "string",
+          "default": "wrapper",
+          "description": "Specify the default class name for the wrapping element"
+        },
+        "markup-element-wrapper.excludedWrappedElements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "html",
+            "head",
+            "body",
+            "style",
+            "script",
+            "noscript",
+            "template",
+            "app-root",
+            "ng-template",
+            "svg"
+          ],
+          "description": "A list of all excluded wrapped (non-self closing) elements"
+        },
+        "markup-element-wrapper.excludedWrappedSelfClosingElements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "meta",
+            "link"
+          ],
+          "description": "A list of all excluded wrapped (self closing) elements"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "vscode:prepublish": "npm run package",
+    "package": "npm run check-types && node esbuild.js --production"
+  },
+  "devDependencies": {
+    "@types/js-beautify": "^1.14.3",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.21.4",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "js-beautify": "^1.15.1",
+    "vscode-html-languageservice": "^5.2.0"
+  }
+}
