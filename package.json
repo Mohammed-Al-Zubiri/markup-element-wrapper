@@ -2,6 +2,10 @@
   "name": "markup-element-wrapper",
   "displayName": "Markup Element Wrapper",
   "description": "Wrap Elements for markup languages (such as HTML, SVG, XML, embedded HTML, etc.) with ease",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mohammed-Al-Zubiri/markup-element-wrapper"},
+  "icon": "images/icon.png",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.89.0"
