@@ -9,7 +9,7 @@ Or you can select multiple lines/elements to group/wrap them inside another elem
 
 For the full list of [commands](#features), you can use Code Actions `(CTRL+.)` then select a command.
 
-![](./images/how-to-use.gif)
+![Demo of Markup Element Wrapper](./images/how-to-use.gif)
 
 ## Features
 
