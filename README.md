@@ -6,6 +6,7 @@ A Visual Studio Code extension that provides a convenient way to wrap elements f
 
 While placing the cursor inside the scope of the element you want to wrap/remove (anywhere between '<' of the opening tag and '>' of the closing tag), you can press `(CTRL+W)` to wrap the element, or `(CTRL+Shift+W)` to remove the element from the tree (without removing its content/children). <br>
 Or you can select multiple lines/elements to group/wrap them inside another element, by using the same shortcut `(CTRL+W)`.<br>
+**New in version 1.1.0:** The extension now can handle multiple selection to wrap more than element at the same time.<br>
 
 For the full list of [commands](#features), you can use Code Actions `(CTRL+.)` then select a command.
 
