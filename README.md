@@ -19,8 +19,8 @@ Commands with keybindings are active for all [supported languages](#supported-la
 
 - **Wrap with div**: Use the `ctrl+w` (or `cmd+w` on Mac) shortcut to wrap the selected element with a tag `div` (you can change this default tagname in Extension Settings).
 - **Remove Element**: Use the `ctrl+shift+w` (or `cmd+shift+w` on Mac) shortcut to remove the selected element from the tree (without removing its content/children).
-- **Wrap with different element**: This command allows you to wrap the selected element with a different tag.
-- **Wrap Selection**: This command allows you to wrap the selected text with the specified tag.
+- **Wrap with different element**: This command allows you to wrap the selected element with a different tag than the default (will call a prompt to enter tagname to wrap with).
+- **Wrap Selection**: This command allows you to wrap the selected text with the 'span' tagname and highlights the tagname for editing if needed.
 
 You can optionally change Keybindings for this extension in VS Code: File > Preferences > Keyboard Shortcuts, then type the Extension name in the search bar
 
