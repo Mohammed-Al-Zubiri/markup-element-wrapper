@@ -36,14 +36,13 @@ You can customize the behavior of the extension by modifying the following setti
 ## Supported Languages
 
 - html
-- svg
-- xml
 - vue
 - jsx
 - tsx
 - sve
 - php
-- erb
+- svg
+- xml
 
 ## License
 
