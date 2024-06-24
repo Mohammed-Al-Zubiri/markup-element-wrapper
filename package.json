@@ -17,12 +17,10 @@
   "activationEvents": [
     "onLanguage:html",
     "onLanguage:vue",
-    "onLanguage:jsx",
-    "onLanguage:tsx",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
     "onLanguage:svelte",
     "onLanguage:php",
-    "onLanguage:erb",
-    "onLanguage:svg",
     "onLanguage:xml"
   ],
   "main": "./dist/extension",
@@ -32,13 +30,13 @@
         "command": "extension.wrapWithDefault",
         "key": "ctrl+w",
         "mac": "cmd+w",
-        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == jsx || editorLangId == tsx || editorLangId == svelte || editorLangId == markdown || editorLangId == php || editorLangId == erb)"
+        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == javascriptreact || editorLangId == typescriptreact || editorLangId == svelte || editorLangId == php || editorLangId == xml)"
       },
       {
         "command": "extension.removeElement",
         "key": "ctrl+shift+w",
         "mac": "cmd+shift+w",
-        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == jsx || editorLangId == tsx || editorLangId == svelte || editorLangId == markdown || editorLangId == php || editorLangId == erb)"
+        "when": "editorTextFocus && (editorLangId == html || editorLangId == vue || editorLangId == javascriptreact || editorLangId == typescriptreact || editorLangId == svelte || editorLangId == php || editorLangId == xml)"
       }
     ],
     "commands": [
