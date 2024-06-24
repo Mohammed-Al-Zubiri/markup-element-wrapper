@@ -212,7 +212,8 @@ async function wrapWithElement(editor: vscode.TextEditor, isDifferentElement: bo
 		const DEFAULT_CLASS = config.get('defaultClassName') as string;
 
 		let wrappingTagName = DEFAULT_ELEMENT ?? 'div';
-		const classAttr = ` class="${DEFAULT_CLASS ?? 'wrapper'}"`;
+		const classAttrName = classAttrString(editor);
+		const classAttr = ` ${classAttrName}="${DEFAULT_CLASS ?? 'wrapper'}"`;
 
 		// prompt the user to enter different element tagname
 		if (isDifferentElement) {
@@ -259,7 +260,7 @@ async function wrapWithElement(editor: vscode.TextEditor, isDifferentElement: bo
 		// select wrappingElement classname for all selections
 		editorSelections = Array.from(editor.selections); // necessary because editor.selections is readonly but can be reassigned since it is not const
 		for (let i = 0; i < editorSelections.length; i++) {
-			editorSelections[i] = selectWrappingElementClass(editorSelections[i].start, {tagName: wrappingTagName, DEFAULT_CLASS}, indents[i]);
+			editorSelections[i] = selectWrappingElementClass(editorSelections[i].start, {tagName: wrappingTagName, classAttrName ,DEFAULT_CLASS}, indents[i]);
 		}
 		editor.selections = editorSelections;
 	}
@@ -450,8 +451,9 @@ function elementLevelChecker(editor: vscode.TextEditor, selection: vscode.Select
 
 function selectWrappingElementClass(start: vscode.Position, wrappingElement: any, indent: any): vscode.Selection {
 	const TAG_NAME_LENGTH = wrappingElement.tagName.length;
+	const ATTR_NAME_LENGTH = wrappingElement.classAttrName.length;
 	const CLASS_NAME_LENGTH = wrappingElement.DEFAULT_CLASS.length;
-	const SEEK_POSITION = (TAG_NAME_LENGTH + 9) + (indent.indentLineOne? indent.indentationCount: 0);
+	const SEEK_POSITION = (TAG_NAME_LENGTH + ATTR_NAME_LENGTH + 4) + (indent.indentLineOne? indent.indentationCount: 0);
 
 	// Set selection line and character positions
 	start = start.with(start.line, start.character + SEEK_POSITION);
@@ -479,4 +481,9 @@ function unselectText(editor: vscode.TextEditor, selection: vscode.Selection): v
 	const selectionStart = selection.start; // Get the start position of the selection
 	const position = selectionStart.with(selectionStart.line, selectionStart.character + tagNameEnd);
 	return new vscode.Selection(position, position);
+}
+
+function classAttrString(editor: vscode.TextEditor): string {
+	const isReact = editor.document.languageId.match(/typescriptreact|javascriptreact/);
+	return isReact? 'className': 'class';
 }
